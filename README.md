@@ -108,6 +108,20 @@ En 3 de 4 revisiones de código sano no dio ninguna falsa alarma e incluso seña
 
 ---
 
+## Cómo se hizo el video
+
+El video de presentación de GATLOCK se armó con estas herramientas:
+
+| Herramienta | Para qué se usó |
+|---|---|
+| 🎙️ **ElevenLabs** | La voz en off del gato. La versión final usa la voz **Jaider** (en una primera versión se usó ttsmaker) |
+| 🎬 **Kling** | La animación del gato entrando al túnel de código |
+| 🤖 **Claude Code** | La edición en el computador: unir las escenas con la voz, arreglar el inicio en negro y sacar una versión compatible con cualquier reproductor |
+| 🌐 **Google AI Studio** | Las tomas de la [web GATLOCK](https://gatlock-seguridad.ai.studio/) que aparecen en el video |
+| ▶️ **VLC** | La reproducción y revisión del video |
+
+---
+
 ## Transparencia
 
 - GATLOCK hace análisis estático: no ejecuta el código ni lanza ataques.
