@@ -5,7 +5,7 @@
 
 **Encuentra la falla. La explica. Te entrega el arreglo. En segundos.**
 
-`Agente v2.12` · `Página v28` · `Noviembre 2026`
+`Agente v2.13` · `Página v29` · `Noviembre 2026`
 
 [🌐 Ver GATLOCK en acción](https://gatlock-seguridad.ai.studio/) · [💬 Hablar con GATLOCK](https://agent.jotform.com/01a1ff72a1a870008745db19e4838d0fa34a) · [📚 Biblioteca de vulnerabilidades](https://revisor-seguridad.cmarevalor1.workers.dev/biblioteca.html)
 
@@ -74,7 +74,14 @@ En 3 de 4 revisiones de código sano no dio ninguna falsa alarma e incluso seña
 
 ---
 
-## Novedades de la versión 2.12
+## Novedades de la versión 2.13
+
+- ⚙️ **Reglas fijas, sin IA, como Semgrep.** Buscan al instante patrones conocidos (inyección SQL y de comandos, XSS, eval, rutas de archivo, rutas de administración sin rol, contraseñas con MD5, modo de pruebas encendido y más). Si la IA encuentra lo mismo, la falla queda confirmada por las dos.
+- 🧹 **Menos falsas alarmas.** Filtros nuevos: no reporta datos que no vienen del usuario, ni "claves expuestas" que en realidad no tienen ningún valor escrito, ni temas fuera de alcance.
+- ⏱️ **Más rápido.** Límite de tiempo por revisión y el segundo especialista solo entra cuando el código tiene sesiones, archivos, dinero o administración.
+- 📚 **Ficha nueva:** asignación masiva (RV-COD-18). La biblioteca llega a 37 vulnerabilidades.
+
+### Lo que ya traía
 
 - 🤝 **Dos especialistas de IA trabajando a la vez.** Uno caza inyecciones, claves y configuración; el otro, fallas de control de acceso, operaciones con dinero, archivos y rutas de administración.
 - 🧹 **Filtro contra falsas alarmas.** Solo reporta lo que tiene evidencia real en el código.
@@ -82,13 +89,13 @@ En 3 de 4 revisiones de código sano no dio ninguna falsa alarma e incluso seña
 - 📦 **OSV.dev en vivo con doble comprobación.** Dice qué librerías tienen fallas conocidas y a qué versión actualizar, y antes de recomendarla la vuelve a verificar (hasta 3 veces).
 - ✅ **Botón "Verificar parche".** Comprueba si la corrección realmente cerró la falla.
 - 🌐 **Escáner pasivo de páginas web.** Revisa HTTPS, cabeceras de seguridad, cookies, CORS y librerías, sin atacar el sitio.
-- 📚 **Biblioteca de 36 vulnerabilidades**, cada una con su ficha CWE, OWASP Top 10:2025, corrección y forma de comprobarla.
+- 📚 **Biblioteca de 37 vulnerabilidades**, cada una con su ficha CWE, OWASP Top 10:2025, corrección y forma de comprobarla.
 
 ### Inspirado en herramientas de referencia de la industria
 
 | Herramienta de referencia | Cómo lo cubre GATLOCK |
 |---|---|
-| Semgrep | Equivalente propio con dos especialistas de IA |
+| Semgrep | Reglas fijas propias + dos especialistas de IA |
 | Gitleaks | Detector de claves propio |
 | OSV-Scanner | Integrado (OSV.dev en vivo) |
 | Trivy | OSV.dev + revisión de archivos de servidor |
@@ -103,7 +110,7 @@ En 3 de 4 revisiones de código sano no dio ninguna falsa alarma e incluso seña
 | 🌐 **Web GATLOCK** | La presentación del proyecto: [gatlock-seguridad.ai.studio](https://gatlock-seguridad.ai.studio/) |
 | 🧠 **Revisor de código** | El agente que analiza el código y las páginas web |
 | 💬 **GATLOCK, el asistente** | Conversa contigo sobre seguridad en código hecho con IA: [abrir chat](https://agent.jotform.com/01a1ff72a1a870008745db19e4838d0fa34a) |
-| 📚 **Biblioteca** | [36 fichas de vulnerabilidades](https://revisor-seguridad.cmarevalor1.workers.dev/biblioteca.html) |
+| 📚 **Biblioteca** | [37 fichas de vulnerabilidades](https://revisor-seguridad.cmarevalor1.workers.dev/biblioteca.html) |
 | 🧰 **Reporte de herramientas** | [Qué herramientas, conectores y APIs usa](https://revisor-seguridad.cmarevalor1.workers.dev/herramientas.html) |
 
 ---
@@ -125,7 +132,7 @@ El video de presentación de GATLOCK se armó con estas herramientas:
 ## Transparencia
 
 - GATLOCK hace análisis estático: no ejecuta el código ni lanza ataques.
-- Los resultados vienen de pruebas internas del prototipo (versiones 2.10 y 2.11, noviembre de 2026). La versión 2.12 se está midiendo.
+- Los resultados vienen de pruebas internas del prototipo (versiones 2.10 a 2.12, noviembre de 2026). La versión 2.13 se está midiendo con un banco de casos nuevo.
 - Ninguna herramienta garantiza seguridad total. Una persona revisa cada corrección antes de aplicarla.
 
 ---
