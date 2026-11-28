@@ -190,6 +190,8 @@ GATLOCK (Revisor IA de Seguridad de Código) es un proyecto del grupo del Reto 6
 - **Edwin Javier Largo**: el prompt que dio origen a la biblioteca de vulnerabilidades basada en las herramientas del agente, y a la revisión de servidores y páginas web, no solo de código.
 - **Jepher Díaz y Fabián Pulido**: la hoja de pruebas y rechazo (banco ciego) que midió los resultados reales del agente.
 
+🤖 Con el apoyo de Claude (Anthropic) como asistente de IA en el código del agente, las pruebas, la documentación y esta vitrina.
+
 <div align="center">
 
 **GATLOCK · Sector ITO · Ciberseguridad para el código generado con IA**

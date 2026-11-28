@@ -116,6 +116,8 @@ En el mismo trabajo de pruebas y rechazo, Jepher Díaz y Fabián Pulido revisaro
 
 Ninguna herramienta garantiza seguridad total: que GATLOCK no encuentre fallas no prueba que el código sea seguro, y una persona revisa cada corrección antes de aplicarla.
 
+🤖 Con el apoyo de Claude (Anthropic) como asistente de IA en el código del agente, las pruebas, la documentación y esta vitrina.
+
 ---
 
 <div align="center">
