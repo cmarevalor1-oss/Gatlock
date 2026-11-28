@@ -9,6 +9,8 @@
 
 [🌐 Ver GATLOCK en acción](https://gatlock-seguridad.ai.studio/) · [💬 Hablar con GATLOCK](https://agent.jotform.com/01a1ff72a1a870008745db19e4838d0fa34a) · [📚 Biblioteca de vulnerabilidades](https://revisor-seguridad.cmarevalor1.workers.dev/biblioteca.html)
 
+<a href="https://github.com/cmarevalor1-oss/Gatlock/raw/main/evidencias/GATLOCK_pruebas_y_rechazo.xlsx"><img src="https://img.shields.io/badge/%F0%9F%93%A5%20Descargar-Evidencia%20de%20pruebas%20(Excel)-1D6F42?style=for-the-badge" alt="Descargar evidencia de pruebas en Excel"></a>
+
 </div>
 
 ---
@@ -56,7 +58,7 @@ Revisa **JavaScript / Node.js, HTML / React y Python**, además de archivos de s
 
 > Es una muestra pequeña y no es un banco ciego. 2 de las 11 revisiones salieron incompletas: un especialista de IA no respondió (casos 3 y 6), aunque las dos encontraron lo esperado. Hubo además 1 intento que no terminó por un error del servicio de IA (tardó más de 30 s).
 >
-> 🧪 **[Ver la evidencia completa de pruebas y rechazo](evidencias/pruebas-y-rechazo.md)**: cómo se prueba, qué se rechazó en cada versión, el banco ciego de la v2.12, la revisión frente a OWASP y el detalle de estas 11 revisiones.
+> 🧪 **[Ver la evidencia completa de pruebas y rechazo](evidencias/pruebas-y-rechazo.md)** · 📥 **[Descargar en Excel](https://github.com/cmarevalor1-oss/Gatlock/raw/main/evidencias/GATLOCK_pruebas_y_rechazo.xlsx)**: cómo se prueba, qué se rechazó en cada versión, el banco ciego de la v2.12, la revisión frente a OWASP y el detalle de estas 11 revisiones.
 
 ### Casos de éxito
 
