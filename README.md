@@ -5,7 +5,7 @@
 
 **Encuentra la falla. La explica. Te entrega el arreglo. En segundos.**
 
-`Agente v2.13` · `Página v29` · `Noviembre 2026`
+`Agente v2.13.1` · `Página v30.2` · `Demo Day · 3 de diciembre de 2026`
 
 [🌐 Ver GATLOCK en acción](https://gatlock-seguridad.ai.studio/) · [💬 Hablar con GATLOCK](https://agent.jotform.com/01a1ff72a1a870008745db19e4838d0fa34a) · [📚 Biblioteca de vulnerabilidades](https://revisor-seguridad.cmarevalor1.workers.dev/biblioteca.html)
 
@@ -40,31 +40,41 @@ Revisa **JavaScript / Node.js, HTML / React y Python**, además de archivos de s
 
 | 🏆 **9 de 10** | ✅ **12 de 13** | 🎯 **3 de 3** | ⚡ **~31 s** |
 |:---:|:---:|:---:|:---:|
-| fallas reales encontradas en una app bancaria de prueba, en 64 segundos | casos de práctica aprobados | casos superados en la última ronda | tiempo típico por revisión |
+| fallas sembradas encontradas en una app bancaria de prueba · v2.10, 24/11/2026 | casos de práctica aprobados · v2.10, 24/11/2026 * | casos superados en la última ronda · v2.11, 24/11/2026 | mediana por revisión · v2.10, 24/11/2026 |
 
 </div>
 
-> **En el mismo caso bancario, Semgrep 1.186.0, una herramienta profesional de referencia, encontró 4 de 10. GATLOCK encontró 9.**
+> **En el mismo caso bancario, Semgrep 1.186.0, una herramienta profesional de referencia, encontró 4 de 10 (24/11/2026, reglas comunitarias de Python y Flask). GATLOCK v2.10 encontró 9.**
+>
+> \* Cifra en revisión: en el registro de cambios, esta misma ronda aparece una vez como 12 de 13 y otra como 11 de 12 (falló el caso 8).
+
+**Primera medición de la versión 2.13.1 con la IA real (27/11/2026, 9 revisiones de casos de práctica):**
+
+| 🎯 **5 de 5** | ✅ **0** | ⚠️ **1** | ⏱️ **10 a 85 s** |
+|:---:|:---:|:---:|:---:|
+| casos con falla en los que la encontró | falsas alarmas en 4 revisiones de código sano | hallazgo de más (caso 11, Flask), ya identificado | por revisión; incluyen la verificación "no soy un robot" (pendiente medir el tiempo del agente por separado) |
+
+> Es una muestra pequeña y no es un banco ciego. 1 de las 9 revisiones salió incompleta: un especialista de IA no respondió (caso 3), aunque sí encontró la falla. Hubo además 1 intento que no terminó por un error del servicio de IA (tardó más de 30 s).
 
 ### Casos de éxito
 
 **1. App bancaria con 10 fallas escondidas** · 🔴 Crítica
-Encontró 9 en 64 segundos: datos manipulables para ejecutar órdenes, transferencias y reportes que dejaban leer la base de datos, contraseñas guardadas con un método débil, documentos de otros usuarios a la vista, una clave por defecto, el modo de pruebas encendido, registros con datos sensibles y subida de archivos sin control. Además reconoció 2 protecciones que el código sí tenía bien hechas.
+Encontró 9 (v2.10, 24/11/2026): datos manipulables para ejecutar órdenes, transferencias y reportes que dejaban leer la base de datos, contraseñas guardadas con un método débil, documentos de otros usuarios a la vista, una clave por defecto, el modo de pruebas encendido, registros con datos sensibles y subida de archivos sin control. Además reconoció 2 protecciones que el código sí tenía bien hechas.
 
 **2. Contraseña escrita dentro del código** · 🔴 Crítica
-Detectada en 27 segundos. Arreglo propuesto: guardar la clave aparte, en una variable de entorno.
+Detectada (v2.10). Arreglo propuesto: guardar la clave aparte, en una variable de entorno.
 
 **3. Formulario que dejaba leer toda la base de datos (inyección SQL)** · 🔴 Crítica
-Detectado en JavaScript en 15 segundos, y también en Python. Arreglo: consultas seguras con parámetros.
+Detectado en JavaScript y también en Python (v2.10). Arreglo: consultas seguras con parámetros.
 
 **4. Página que dejaba meter código malicioso (XSS)** · 🟠 Alta
 Detectada en JavaScript y en React. Arreglo: mostrar el texto del usuario como texto, sin ejecutarlo.
 
 **5. Lista de usuarios visible para cualquiera** · 🟠 Alta
-Una función entregaba los datos de todos sin comprobar si quien pedía era administrador. Encontrada en 14 segundos.
+Una función entregaba los datos de todos sin comprobar si quien pedía era administrador (v2.10).
 
 **6. Comandos peligrosos y archivos fuera de lugar** · 🟠 Alta
-Un atacante podía ejecutar órdenes en el servidor (detectado en 13 s) o abrir archivos privados cambiando la ruta (11 s).
+Un atacante podía ejecutar órdenes en el servidor o abrir archivos privados cambiando la ruta (ambos detectados con la v2.10).
 
 **7. Librerías viejas con fallas conocidas** · 🟠 Alta / 🟡 Media
 Consultó OSV.dev, la base de datos de Google, y encontró 12 fallas conocidas en 3 librerías (lodash, jsonwebtoken y express), con la versión exacta a la que hay que actualizar.
@@ -73,6 +83,12 @@ Consultó OSV.dev, la base de datos de Google, y encontró 12 fallas conocidas e
 En 3 de 4 revisiones de código sano no dio ninguna falsa alarma e incluso señaló lo que estaba bien hecho. La alarma de más del cuarto caso se corrigió en versiones posteriores.
 
 ---
+
+## Novedades de la versión 2.13.1 (27/11/2026)
+
+- 🛡️ **Protección contra abuso.** Cada persona puede hacer hasta 5 revisiones por minuto, con un contador exacto. Así nadie puede agotar la IA del servicio.
+- 🤖 **Verificación "no soy un robot"** (Cloudflare Turnstile). Casi siempre es invisible; si hace falta, aparece una casilla abajo a la derecha.
+- 👥 **"¿Quién hace la prueba?"** Se escoge el nombre de la lista del equipo y queda en cada informe.
 
 ## Novedades de la versión 2.13
 
@@ -99,7 +115,9 @@ En 3 de 4 revisiones de código sano no dio ninguna falsa alarma e incluso seña
 | Gitleaks | Detector de claves propio |
 | OSV-Scanner | Integrado (OSV.dev en vivo) |
 | Trivy | OSV.dev + revisión de archivos de servidor |
-| OWASP ZAP (modo pasivo) / Nuclei | Escáner pasivo de páginas web (cobertura parcial) |
+| OWASP ZAP (modo pasivo) | Escáner pasivo de páginas web: cabeceras, cookies, CORS, formularios y errores |
+| Nuclei | Cobertura parcial: reconoce librerías JavaScript con fallas conocidas (CVE) sin enviar ataques; no ejecuta las plantillas de Nuclei |
+| Greenbone | Fuera de alcance: escanea redes y dispositivos y debe instalarse dentro de la red |
 
 ---
 
@@ -132,7 +150,7 @@ El video de presentación de GATLOCK se armó con estas herramientas:
 ## Transparencia
 
 - GATLOCK hace análisis estático: no ejecuta el código ni lanza ataques.
-- Los resultados vienen de pruebas internas del prototipo (versiones 2.10 a 2.12, noviembre de 2026). La versión 2.13 se está midiendo con un banco de casos nuevo.
+- Los resultados vienen de pruebas internas del prototipo (versiones 2.10 a 2.13.1, noviembre de 2026); cada cifra indica su versión y su fecha. La versión 2.13.1 tiene una primera medición pequeña (9 revisiones, 27/11/2026); falta un banco ciego nuevo.
 - Ninguna herramienta garantiza seguridad total. Una persona revisa cada corrección antes de aplicarla.
 
 ---
@@ -147,28 +165,26 @@ El código fuente es privado. GATLOCK está disponible para **licencias, pilotos
 
 ## El equipo
 
-GATLOCK es un proyecto creado y presentado por:
+GATLOCK (Revisor IA de Seguridad de Código) es un proyecto del grupo del Reto 6, Sector ITO.
 
 **Líderes del proyecto**
-- Carlos Ibáñez
-- Andrés Tarquino
+- **Carlos Ibáñez** (profesor): nos dio las pautas para culminar con éxito el proyecto.
+- **Andrés Tarquino**: entregó la *Instrucción Maestra de Operación* y elaboró el objetivo general y los objetivos específicos.
 
-**Implementadores**
-- Claudia Margarita Arévalo Ruiz
-- Camilo Miranda
-- Carlos Fabián Vargas Medina
-- Fabián Pulido
-- Jaime Granados
-- Javier
-- Javier Alfonso Morán Rodríguez
-- Jepher Díaz
-- Jorge Andrés Sánchez
-- Jorge Enrique Ladrón de Guevara López
-- José William Medina Rodríguez
-- Mauricio Rodríguez Barrero
-- Miguel Caicedo
-- Orlando Chaparro Herrera
-- Yesenia Ballestas
+| Rol | Integrantes |
+|---|---|
+| Repositorio en GitHub (subir el código y verificar que corra) | Camilo Andrés Miranda Fuentes y Claudia Margarita Arévalo Ruiz |
+| Auditoría de repositorios GitHub | Camilo Andrés Miranda Fuentes |
+| Documentación | Jorge Enrique Ladrón de Guevara López y Miguel Caicedo |
+| Integración y desarrollo | Edwin Javier Largo y Claudia Margarita Arévalo Ruiz |
+| Pruebas y rechazo | Jepher Díaz y Fabián Pulido |
+| Revisión final | Todo el equipo: Carlos Fabián Vargas Medina, Jaime Granados, Javier Alfonso Morán Rodríguez, Jorge Andrés Sánchez, José William Medina Rodríguez, Mauricio Rodríguez Barrero, Orlando Chaparro Herrera y Yesenia Ballestas, junto con los demás integrantes |
+| Observador | Johan Alfonso |
+
+**Aportes destacados**
+- **Camilo Andrés Miranda Fuentes**: desarrolló la auditoría de repositorios GitHub. El agente revisa un repositorio completo a partir de su dirección y rama, conectado a un segundo servicio de análisis en Python (versiones v2.14 a v2.16, en desarrollo).
+- **Edwin Javier Largo**: el prompt que dio origen a la biblioteca de vulnerabilidades basada en las herramientas del agente, y a la revisión de servidores y páginas web, no solo de código.
+- **Jepher Díaz y Fabián Pulido**: la hoja de pruebas y rechazo (banco ciego) que midió los resultados reales del agente.
 
 <div align="center">
 
