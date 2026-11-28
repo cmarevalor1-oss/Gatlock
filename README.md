@@ -48,13 +48,15 @@ Revisa **JavaScript / Node.js, HTML / React y Python**, además de archivos de s
 >
 > \* Cifra en revisión: en el registro de cambios, esta misma ronda aparece una vez como 12 de 13 y otra como 11 de 12 (falló el caso 8).
 
-**Primera medición de la versión 2.13.1 con la IA real (27/11/2026, 9 revisiones de casos de práctica):**
+**Primera medición de la versión 2.13.1 con la IA real (27/11/2026, 11 revisiones de casos de práctica):**
 
-| 🎯 **5 de 5** | ✅ **0** | ⚠️ **1** | ⏱️ **10 a 85 s** |
+| 🎯 **7 de 7** | ✅ **0** | ⚠️ **1** | ⏱️ **10 a 85 s** |
 |:---:|:---:|:---:|:---:|
 | casos con falla en los que la encontró | falsas alarmas en 4 revisiones de código sano | hallazgo de más (caso 11, Flask), ya identificado | por revisión; incluyen la verificación "no soy un robot" (pendiente medir el tiempo del agente por separado) |
 
-> Es una muestra pequeña y no es un banco ciego. 1 de las 9 revisiones salió incompleta: un especialista de IA no respondió (caso 3), aunque sí encontró la falla. Hubo además 1 intento que no terminó por un error del servicio de IA (tardó más de 30 s).
+> Es una muestra pequeña y no es un banco ciego. 2 de las 11 revisiones salieron incompletas: un especialista de IA no respondió (casos 3 y 6), aunque las dos encontraron lo esperado. Hubo además 1 intento que no terminó por un error del servicio de IA (tardó más de 30 s).
+>
+> 🧪 **[Ver la evidencia completa de pruebas y rechazo](evidencias/pruebas-y-rechazo.md)**: cómo se prueba, qué se rechazó en cada versión, el banco ciego de la v2.12, la revisión frente a OWASP y el detalle de estas 11 revisiones.
 
 ### Casos de éxito
 
@@ -150,7 +152,7 @@ El video de presentación de GATLOCK se armó con estas herramientas:
 ## Transparencia
 
 - GATLOCK hace análisis estático: no ejecuta el código ni lanza ataques.
-- Los resultados vienen de pruebas internas del prototipo (versiones 2.10 a 2.13.1, noviembre de 2026); cada cifra indica su versión y su fecha. La versión 2.13.1 tiene una primera medición pequeña (9 revisiones, 27/11/2026); falta un banco ciego nuevo.
+- Los resultados vienen de pruebas internas del prototipo (versiones 2.10 a 2.13.1, noviembre de 2026); cada cifra indica su versión y su fecha. La versión 2.13.1 tiene una primera medición pequeña (11 revisiones, 27/11/2026); falta un banco ciego nuevo.
 - Ninguna herramienta garantiza seguridad total. Una persona revisa cada corrección antes de aplicarla.
 
 ---
