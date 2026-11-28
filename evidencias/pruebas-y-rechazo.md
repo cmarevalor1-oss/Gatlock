@@ -2,7 +2,7 @@
 
 Soporte público de cómo se probó GATLOCK, qué se rechazó y qué se corrigió en cada versión. Cada cifra indica su versión y su fecha. El código del agente es privado; aquí solo están los resultados.
 
-[⬅️ Volver a la vitrina](../README.md) · [🌐 Probar el revisor](https://revisor-seguridad.cmarevalor1.workers.dev)
+[⬅️ Volver a la vitrina](../README.md) · [🌐 Probar el revisor](https://revisor-seguridad.cmarevalor1.workers.dev) · [📥 Descargar en Excel](https://github.com/cmarevalor1-oss/Gatlock/raw/main/evidencias/GATLOCK_pruebas_y_rechazo.xlsx)
 
 ---
 
